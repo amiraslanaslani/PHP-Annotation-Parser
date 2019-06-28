@@ -18,6 +18,10 @@ class MethodAnnotation{
         return $this->list[$name];
     }
 
+    public function getAnnotationKeys(){
+        return array_keys($this->list);
+    }
+
     public function toArray(){
         return $this->list;
     }

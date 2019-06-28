@@ -4,6 +4,9 @@ namespace Dor\AnnotationParser;
 
 class Annotation{
 
+    public $methods = [];
+
+    private $methode_annotations = [];
     private $docs = [
         'class' => '',
         'methods' => []
@@ -15,11 +18,21 @@ class Annotation{
 
         foreach ($class_reflector->getMethods() as $method_reflector) {
             $method_name = $method_reflector->name;
+            $methods[] = $method_name;
             $this->docs['methods'][$method_name] = $method_reflector->getDocComment();
+            $this->methode_annotations[$method_name] = $this->getMethod($method_name);
         }
     }
 
-    public function method($name){
+    public function getMethods(){
+        return $this->methode_annotations;
+    }
+
+    public function hasMethod($name){
+        return in_array($name, $this->methodes);
+    }
+
+    public function getMethod($name){
         return new MethodAnnotation(
             $this->getMethodAnnotation($name)
         );
