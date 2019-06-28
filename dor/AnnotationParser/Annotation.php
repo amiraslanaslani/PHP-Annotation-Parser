@@ -1,6 +1,6 @@
 <?php
 
-namespace annon;
+namespace dor\AnnotationParser;
 
 class Annotation{
 
@@ -17,6 +17,12 @@ class Annotation{
             $method_name = $method_reflector->name;
             $this->docs['methods'][$method_name] = $method_reflector->getDocComment();
         }
+    }
+
+    public function method($name){
+        return new MethodAnnotation(
+            $this->getMethodAnnotation($name)
+        );
     }
 
     public function getMethodAnnotation($method_name){
