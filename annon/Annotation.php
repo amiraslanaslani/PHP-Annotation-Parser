@@ -15,7 +15,7 @@ class Annotation{
 
         foreach ($class_reflector->getMethods() as $method_reflector) {
             $method_name = $method_reflector->name;
-            $this->docs[$method_name] = $method_reflector->getDocComment();
+            $this->docs['methods'][$method_name] = $method_reflector->getDocComment();
         }
     }
 
@@ -50,11 +50,10 @@ class Annotation{
 
     private function getAnnoDetails($anno){
         $details = ['', ''];
-        $anno = str_replace(' ', '', $anno);
         $splited = explode('(', $anno);
-        $details[0] = $splited[0];
+        $details[0] = str_replace(' ', '', $splited[0]);
         $splited = explode(')', $splited[1]);
-        $details[1] = $splited[0];
+        $details[1] = trim($splited[0]);
         return $details;
     }
 
