@@ -1,4 +1,9 @@
 <?php
+/**
+ * User: Amir Aslan Aslani
+ * Date: 6/28/19
+ * Time: 3:00 AM
+ */
 
 namespace Dor\AnnotationParser;
 
@@ -7,12 +12,14 @@ class Annotation{
     public $methods = [];
 
     private $methode_annotations = [];
+    private $array_delimiter = ',';
     private $docs = [
         'class' => '',
         'methods' => []
     ];
 
-    public function __construct(string $class_name){
+    public function __construct(string $class_name, string $array_delimiter = ','){
+        $this->array_delimiter = $array_delimiter;
         $class_reflector = new \ReflectionClass($class_name);
         $this->docs['class'] = $class_reflector->getDocComment();
 
@@ -60,7 +67,7 @@ class Annotation{
 
     private function setAnnotationsArrays($annos_content){
         foreach($annos_content as $key => $value){
-            $exploded = explode(',', $value);
+            $exploded = explode($this->array_delimiter, $value);
             if(count($exploded) > 1)
                 $annos_content[$key] = $exploded;
         }
