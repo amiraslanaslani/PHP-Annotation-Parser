@@ -1,0 +1,20 @@
+ {
+    "name": "dor/annotationparser",
+    "type": "library",
+    "description": "Annotation Parser",
+    "keywords": ["Annotation","Parse"],
+    "homepage": "http://amiraslan.ir",
+    "authors": [
+        {
+            "name": "Amir Aslan Aslani",
+            "email": "man@amiraslan.ir",
+            "homepage": "http://amiraslan.ir",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.0"
+    },
+    "autoload": {
+    }
+}
