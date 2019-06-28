@@ -1,6 +1,6 @@
 <?php
 
-namespace dor\AnnotationParser;
+namespace Dor\AnnotationParser;
 
 class Annotation{
 
